@@ -5,12 +5,12 @@ import ControlPanel from "./ControlPanel.component";
 import Display from "./Display.component";
 import Pattern from "./Pattern.component";
 import Board from "./Board.component";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { createTheme, ThemeProvider, StyledEngineProvider, adaptV4Theme } from "@mui/material/styles";
 import { ContextProvider } from "../Context";
 
-const theme = createTheme({
+const theme = createTheme(adaptV4Theme({
   palette: {
-    type: "dark",
+    mode: "dark",
     primary: {
       main: "#CBFF8B",
     },
@@ -27,23 +27,25 @@ const theme = createTheme({
       },
     },
   },
-});
+}));
 
 const App = () => {
   return (
     <ContextProvider>
-      <ThemeProvider theme={theme}>
-        <div className="Page">
-          <div className="App">
-            <Header />
-            <ControlPanel />
-            <Display />
-            <Pattern />
-            <Board />
+      <StyledEngineProvider injectFirst>
+        <ThemeProvider theme={theme}>
+          <div className="Page">
+            <div className="App">
+              <Header />
+              <ControlPanel />
+              <Display />
+              <Pattern />
+              <Board />
+            </div>
           </div>
-        </div>
-        {/* <canvas id="canvas"></canvas> */}
-      </ThemeProvider>
+          {/* <canvas id="canvas"></canvas> */}
+        </ThemeProvider>
+      </StyledEngineProvider>
     </ContextProvider>
   );
 };
