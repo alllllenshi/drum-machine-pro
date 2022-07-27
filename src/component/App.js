@@ -5,29 +5,34 @@ import ControlPanel from "./ControlPanel.component";
 import Display from "./Display.component";
 import Pattern from "./Pattern.component";
 import Board from "./Board.component";
-import { createTheme, ThemeProvider, StyledEngineProvider, adaptV4Theme } from "@mui/material/styles";
+import {
+  createTheme,
+  ThemeProvider,
+  StyledEngineProvider,
+} from "@mui/material/styles";
 import { ContextProvider } from "../Context";
 
-const theme = createTheme(adaptV4Theme({
+const theme = createTheme({
   palette: {
     mode: "dark",
     primary: {
       main: "#CBFF8B",
     },
   },
+
   overrides: {
     MuiInputLabel: {
       // Name of the component ⚛️ / style sheet
       root: {
         // Name of the rul
-        "&$focused": {
+        "&.Mui-focused": {
           // increase the specificity for the pseudo class
           color: "rgba(255,255,255,0.87)",
         },
       },
     },
   },
-}));
+});
 
 const App = () => {
   return (
