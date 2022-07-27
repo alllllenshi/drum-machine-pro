@@ -1,5 +1,5 @@
 import React from "react";
-import { withStyles } from "@mui/styles";
+import withStyles from '@mui/styles/withStyles';
 import Button from "@mui/material/Button";
 
 const styles = (theme) => ({
