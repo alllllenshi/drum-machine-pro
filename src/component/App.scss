@@ -132,18 +132,18 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    height: 4vh;
+    height: 50px;
 
     &__channel {
       @include fontdp(0.87);
       display: inline-block;
-      width: 14vw;
+      width: 210px;
       padding-left: 10px;
     }
     &__label {
       display: inline-block;
       @include fontdp(0.6);
-      width: 3vw;
+      width: 50px;
       margin-left: 4px;
       text-align: center;
     }
@@ -155,7 +155,7 @@ body {
   &-Channel {
     display: flex;
     justify-content: space-evenly;
-    height: 5.5vh;
+    height: 54px;
 
     &__id {
       display: inline-block;
@@ -167,10 +167,10 @@ body {
     }
     &__info {
       display: inline-block;
-      height: 5vh;
-      width: 14vw;
-      border-radius: 10px;
-      margin-top: 3px;
+      height: 50px;
+      width: 210px;
+      border-radius: 7px;
+      margin-top: 4px;
       @include dp(0.2);
       display: flex;
       justify-content: space-evenly;
@@ -179,6 +179,7 @@ body {
 
     &__dragicon {
       cursor: pointer;
+      margin-left: 12px;
     }
     &__stateicon {
       display: flex;
@@ -194,8 +195,8 @@ body {
       appearance: none;
       display: inline-block;
       margin: 4px 2px;
-      width: 3vw;
-      height: 5vh;
+      width: 50px;
+      height: 50px;
       border-radius: 10px;
       @include dp(0.04);
 
@@ -217,9 +218,9 @@ body {
   }
   &-AddChannel {
     @include dp(0.11);
-    width: 14vw;
-    height: 5vh;
-    margin: 5px 0 0 18px;
+    width: 210px;
+    height: 50px;
+    margin: 4px 13px;
     border-radius: 5px;
     @include fontdp(0.6);
     display: flex;
@@ -409,13 +410,13 @@ input[type="range"] {
 
 input[type="radio"] {
   position: relative;
-  width: 3vw;
-  height: 5.5vh;
+  width: 47px;
+  height: 50px;
   border-radius: 3px;
   @include dp(0.05);
   -webkit-appearance: none; /*to disable the default appearance of radio button*/
   -moz-appearance: none;
-  margin: 1.5px;
+  margin: 1px;
 }
 
 input[type="radio"]::before {

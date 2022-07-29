@@ -3,7 +3,9 @@ import {
   AppBar,
   Box,
   Button,
+  Card,
   IconButton,
+  Paper,
   styled,
   Toolbar,
   Typography,
@@ -16,7 +18,6 @@ import Slider from "./Header/Slider.component";
 const Header = (props) => {
   const StyledAppBar = styled(AppBar)(({ theme }) => ({
     display: "flex",
-    backgroundColor: "#222222",
   }));
 
   const StyledButton = styled(Button)(({ theme }) => ({
@@ -59,8 +60,8 @@ const Header = (props) => {
     }
   }, []);
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <StyledAppBar position="static">
+    <StyledAppBar position="static">
+      <Paper elevation={5}>
         <Toolbar>
           <IconButton
             size="large"
@@ -75,7 +76,11 @@ const Header = (props) => {
             <Slider label="volume" id="1" />
             <Slider label="BPM" id="2" />
           </Box>
-          <StyledButton variant="outlined" startIcon={<Save />}>
+          <StyledButton
+            sx={{ boxShadow: 3 }}
+            variant="outlined"
+            startIcon={<Save />}
+          >
             Save
           </StyledButton>
           <StyledButton variant="outlined" startIcon={<Add />}>
@@ -85,8 +90,8 @@ const Header = (props) => {
             Update
           </StyledButton>
         </Toolbar>
-      </StyledAppBar>
-    </Box>
+      </Paper>
+    </StyledAppBar>
   );
 };
 export default Header;

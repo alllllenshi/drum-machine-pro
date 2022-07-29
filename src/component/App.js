@@ -11,43 +11,36 @@ import {
   StyledEngineProvider,
 } from "@mui/material/styles";
 import { ContextProvider } from "../Context";
-import { Box, Container, Grid, styled } from "@mui/material";
+import { Box, Card, Container, Grid, Paper, styled } from "@mui/material";
 import { AspectRatio } from "@mui/icons-material";
 
-// const theme = createTheme({
-//   // palette: {
-//   //   mode: "dark",
-//   //   primary: {
-//   //     main: "#CBFF8B",
-//   //   },
-//   // },
-//   // overrides: {
-//   //   MuiInputLabel: {
-//   //     // Name of the component ⚛️ / style sheet
-//   //     root: {
-//   //       // Name of the rul
-//   //       "&.Mui-focused": {
-//   //         // increase the specificity for the pseudo class
-//   //         color: "rgba(255,255,255,0.87)",
-//   //       },
-//   //     },
-//   //   },
-//   // },
-// });
-
-const PageBox = styled(Box)(({ theme }) => ({
-  backgroundColor: "#1A1A1A",
+const theme = createTheme({
+  palette: {
+    mode: "dark",
+    primary: {
+      main: "#CBFF8B",
+    },
+    background: {
+      default: "#abcdef",
+      paper: "#121212",
+    },
+  },
+});
+const PagePaper = styled(Paper)(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   overflow: "auto",
 }));
 
-const AppBox = styled(Box)(({ theme }) => ({
+const AppPaper = styled(Paper)(({ theme }) => ({
   position: "relative",
-  margin: "40px 0",
-  width: "900px",
+  padding: "30px",
+  width: "1200px",
+}));
 
-  backgroundColor: "#080808",
+const StyledGrid = styled(Grid)(({ theme }) => ({
+  justifyContent: "center",
+  alignItems: "center",
 }));
 
 const App = () => {
@@ -77,27 +70,29 @@ const App = () => {
   });
 
   return (
-    <PageBox ref={pageBoxRef}>
-      <AppBox ref={appBoxRef}>
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <Header />
+    <ThemeProvider theme={theme}>
+      <PagePaper elevation={1} ref={pageBoxRef}>
+        <AppPaper elevation={2} ref={appBoxRef}>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <Header />
+            </Grid>
+            <StyledGrid item xs={3}>
+              <ControlPanel />
+            </StyledGrid>
+            <StyledGrid item xs={5.5}>
+              <Display />
+            </StyledGrid>
+            <StyledGrid item xs={3.5}>
+              <Pattern />
+            </StyledGrid>
+            <Grid item xs={12}>
+              <Board />
+            </Grid>
           </Grid>
-          <Grid item xs={4}>
-            <ControlPanel />
-          </Grid>
-          <Grid item xs={4}>
-            <Display />
-          </Grid>
-          <Grid item xs={4}>
-            <Pattern />
-          </Grid>
-          <Grid item xs={12}>
-            <Board />
-          </Grid>
-        </Grid>
-      </AppBox>
-    </PageBox>
+        </AppPaper>
+      </PagePaper>
+    </ThemeProvider>
   );
 };
 

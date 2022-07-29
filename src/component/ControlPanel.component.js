@@ -1,7 +1,7 @@
-import { Box, Grid } from "@mui/material";
+import { Box, Card, Container, Grid, Paper, styled } from "@mui/material";
 import React, { useState } from "react";
 import Knob from "./ControlPanel/Knob.component";
-// import SelectBox from './ControlPanel/SelectBox.component'
+import SelectBox from "./ControlPanel/SelectBox.component";
 
 const KNOB_INFO = [
   {
@@ -34,22 +34,34 @@ const KNOB_INFO = [
   },
 ];
 
+const KnobContainer = styled(Container)(({ theme }) => ({
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+}));
+
 const ControlPanel = (props) => {
   const [controlData] = useState(KNOB_INFO);
 
-  const knobPanel = controlData.map((info, index) => (
+  const knobPanel = controlData.map((_, index) => (
     <Grid item xs={6}>
-      <Knob info={controlData[index]} />
+      <KnobContainer>
+        <Knob info={controlData[index]} />
+      </KnobContainer>
     </Grid>
   ));
 
   return (
-    <Grid container spacing={2}>
-      <Grid item xs={12}>
-        <Box>channel</Box>
+    <Card elevation={5} sx={{ p: 2 }}>
+      <Grid container spacing={2}>
+        <Grid item xs={12}>
+          <Box>
+            <SelectBox label={"instrument"} />
+          </Box>
+        </Grid>
+        {knobPanel}
       </Grid>
-      {knobPanel}
-    </Grid>
+    </Card>
   );
 };
 export default ControlPanel;
