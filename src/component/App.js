@@ -27,13 +27,13 @@ const theme = createTheme({
   },
 });
 const PagePaper = styled(Paper)(({ theme }) => ({
-  display: "flex",
-  justifyContent: "center",
+  height: "1300px",
   overflow: "auto",
 }));
 
 const AppPaper = styled(Paper)(({ theme }) => ({
   position: "relative",
+  margin: "200px auto 0 auto",
   padding: "30px",
   width: "1200px",
 }));
@@ -56,11 +56,17 @@ const App = () => {
       "resize",
       () => {
         let scale,
-          width = window.innerWidth,
-          height = window.innerHeight,
-          isMax = width >= maxWidth && height >= maxHeight;
+          width = window.innerWidth - 16,
+          isMax = width >= maxWidth;
+        console.log(
+          isMax,
 
-        scale = Math.min(width / maxWidth, height / maxHeight);
+          appBox.clientWidth,
+          appBox.clientHeight,
+          appBox.clientHeight / appBox.clientWidth
+        );
+        scale = width / maxWidth;
+
         appBox.style.transform = isMax ? "" : "scale(" + scale + ")";
         pageBox.style.width = isMax ? "" : maxWidth * scale;
         pageBox.style.height = isMax ? "" : maxHeight * scale;
@@ -68,6 +74,23 @@ const App = () => {
       []
     );
   });
+
+  // window.addEventListener(
+  //   "resize",
+  //   () => {
+  //     let scale,
+  //       width = window.innerWidth,
+  //       height = window.innerHeight,
+  //       isMax = width >= maxWidth && height >= maxHeight;
+  //     console.log(width, height, isMax, maxWidth, maxHeight);
+  //     scale = Math.min(width / maxWidth, height / maxHeight);
+  //     console.log(scale);
+  //     appBox.style.transform = isMax ? "" : "scale(" + scale + ")";
+  //     pageBox.style.width = isMax ? "" : maxWidth * scale;
+  //     pageBox.style.height = isMax ? "" : maxHeight * scale;
+  //   },
+  //   []
+  // );
 
   return (
     <ThemeProvider theme={theme}>
@@ -77,13 +100,13 @@ const App = () => {
             <Grid item xs={12}>
               <Header />
             </Grid>
-            <StyledGrid item xs={3}>
+            <StyledGrid item xs={2.64}>
               <ControlPanel />
             </StyledGrid>
-            <StyledGrid item xs={5.5}>
+            <StyledGrid item xs={5.76}>
               <Display />
             </StyledGrid>
-            <StyledGrid item xs={3.5}>
+            <StyledGrid item xs={3.6}>
               <Pattern />
             </StyledGrid>
             <Grid item xs={12}>

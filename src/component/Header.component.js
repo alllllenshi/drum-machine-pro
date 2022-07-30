@@ -32,33 +32,33 @@ const Header = (props) => {
     },
   }));
 
-  useEffect(() => {
-    const context = new AudioContext();
-    const playButton = document.querySelector(`#channel0`);
+  // useEffect(() => {
+  //   const context = new AudioContext();
+  //   const playButton = document.querySelector(`#channel0`);
 
-    let yodelBuffer;
-    console.log(2);
+  //   let yodelBuffer;
+  //   console.log(2);
 
-    window
-      .fetch("assets/audio/707-bd.mp3")
-      .then((response) => response.arrayBuffer())
-      .then((arrayBuffer) => context.decodeAudioData(arrayBuffer))
-      .then((audioBuffer) => {
-        playButton.disabled = false;
-        yodelBuffer = audioBuffer;
-      });
+  //   window
+  //     .fetch("assets/audio/707-bd.mp3")
+  //     .then((response) => response.arrayBuffer())
+  //     .then((arrayBuffer) => context.decodeAudioData(arrayBuffer))
+  //     .then((audioBuffer) => {
+  //       playButton.disabled = false;
+  //       yodelBuffer = audioBuffer;
+  //     });
 
-    playButton.onclick = () => {
-      play(yodelBuffer);
-    };
+  //   playButton.onclick = () => {
+  //     play(yodelBuffer);
+  //   };
 
-    function play(audioBuffer) {
-      const source = context.createBufferSource();
-      source.buffer = audioBuffer;
-      source.connect(context.destination);
-      source.start();
-    }
-  }, []);
+  //   function play(audioBuffer) {
+  //     const source = context.createBufferSource();
+  //     source.buffer = audioBuffer;
+  //     source.connect(context.destination);
+  //     source.start();
+  //   }
+  // }, []);
   return (
     <StyledAppBar position="static">
       <Paper elevation={5}>
@@ -76,17 +76,13 @@ const Header = (props) => {
             <Slider label="volume" id="1" />
             <Slider label="BPM" id="2" />
           </Box>
-          <StyledButton
-            sx={{ boxShadow: 3 }}
-            variant="outlined"
-            startIcon={<Save />}
-          >
+          <StyledButton sx={{ boxShadow: 3 }} startIcon={<Save />}>
             Save
           </StyledButton>
-          <StyledButton variant="outlined" startIcon={<Add />}>
+          <StyledButton sx={{ boxShadow: 3 }} startIcon={<Add />}>
             New
           </StyledButton>
-          <StyledButton variant="outlined" startIcon={<Update />}>
+          <StyledButton sx={{ boxShadow: 3 }} startIcon={<Update />}>
             Update
           </StyledButton>
         </Toolbar>

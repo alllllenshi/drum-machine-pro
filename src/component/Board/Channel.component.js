@@ -28,7 +28,7 @@ const Channel = (props) => {
       <div className="Board-Channel__info">
         <Draghandle />
         <div className="Board-Channel__id">{clipState[18]}</div>
-        <button id={`channel${track}`}>{track}</button>
+
         <span className="Board-Channel__stateicon">
           <input
             checked={clipState[16]}
