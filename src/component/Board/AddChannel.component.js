@@ -1,15 +1,11 @@
-import React from 'react'
+import React from "react";
 
-const AddChannel = props => {
+const AddChannel = (props) => {
+  return (
+    <div className="Board-AddChannel" onClick={props.addChannel}>
+      ADD CHANNEL+
+    </div>
+  );
+};
 
-
-  
-
-    return (
-        <div className="Board-AddChannel" onClick={props.addChannel}>
-            ADD CHANNEL+
-        </div>
-    )
-}
-
-export default AddChannel
+export default AddChannel;
